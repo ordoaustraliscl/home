@@ -28,7 +28,8 @@
         }
 
         header {
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://unsplash.com') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('foto_fondo.jpg') no-repeat center center/cover;
+            background-color: #111;
             color: var(--text-light);
             text-align: center;
             padding: 60px 20px;
@@ -113,8 +114,8 @@
             color: var(--accent);
         }
 
-        /* Sección de Galería Estilo Instagram */
-        .instagram-section {
+        /* --- ESTILOS DEL CARRUSEL --- */
+        .carousel-section {
             background: var(--bg-card);
             padding: 40px 20px;
             border-radius: 8px;
@@ -122,7 +123,7 @@
             margin-bottom: 50px;
         }
 
-        .instagram-header {
+        .carousel-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -131,56 +132,92 @@
             gap: 15px;
         }
 
-        .instagram-header h2 {
+        .carousel-header h2 {
             color: var(--primary);
         }
 
-        .instagram-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .insta-item {
+        .carousel-wrapper {
             position: relative;
+            max-width: 800px;
+            margin: 0 auto;
             overflow: hidden;
-            border-radius: 6px;
-            aspect-ratio: 1 / 1;
-            background-color: #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
-        .insta-item img {
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background-color: #222;
+        }
+
+        .carousel-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
         }
 
-        .insta-overlay {
+        .carousel-caption {
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.75);
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
             color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+
+        .carousel-dots {
             display: flex;
             justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            font-weight: bold;
-            text-align: center;
-            padding: 15px;
-            font-size: 0.95rem;
+            gap: 10px;
+            margin-top: 20px;
         }
 
-        .insta-item:hover img {
-            transform: scale(1.08);
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        .insta-item:hover .insta-overlay {
-            opacity: 1;
+        .dot.active {
+            background-color: var(--secondary);
         }
 
         footer {
@@ -202,13 +239,14 @@
             header h1 { font-size: 2rem; }
             .logo-club { max-width: 140px; }
             .container { margin: 20px auto; }
+            .carousel-caption { font-size: 0.95rem; padding: 10px; }
+            .carousel-btn { padding: 10px 15px; font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <!-- Contenedor del nuevo logo -->
         <div class="logo-container">
             <img src="logo_ordo_nuevo.png" alt="Logo Ordo Australis" class="logo-club">
         </div>
@@ -242,29 +280,46 @@
             </div>
         </div>
 
-        <!-- Vitrina Visual: Instagram Highlights -->
-        <div class="instagram-section">
-            <div class="instagram-header">
+        <!-- Sección del Carrusel Dinámico -->
+        <div class="carousel-section">
+            <div class="carousel-header">
                 <h2>📸 Campos de Batalla en Ordo</h2>
-                <a href="https://instagram.com" target="_blank" class="btn" style="margin-top:0;">Ver @club_ordo_australis</a>
+                <a href="https://www.instagram.com/club_ordo_australis/" target="_blank" class="btn" style="margin-top:0;">Ver Instagram</a>
             </div>
             
-            <div class="instagram-grid">
-                <div class="insta-item">
-                    <img src="https://unsplash.com" alt="Miniaturas de Wargames">
-                    <div class="insta-overlay">Choque de Facciones: Necrones contra Imperio Tau</div>
+            <div class="carousel-wrapper">
+                <button class="carousel-btn prev-btn" aria-label="Anterior">&#10094;</button>
+                <button class="carousel-btn next-btn" aria-label="Siguiente">&#10095;</button>
+                
+                <div class="carousel-container">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide">
+                        <img src="foto1.jpg" alt="Partidas de Wargames en Ordo Australis">
+                        <div class="carousel-caption">Choque de Facciones en las mesas del club</div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <img src="foto2.jpg" alt="Hobby de Pintura de Miniaturas">
+                        <div class="carousel-caption">Talleres de Modelismo y Pintura de Miniaturas</div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <img src="foto3.jpg" alt="Estrategia e infantería histórica">
+                        <div class="carousel-caption">Simulaciones de Estrategia Histórica y Tableros en Detalle</div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide">
+                        <img src="foto4.jpg" alt="Campañas de fantasía y dados">
+                        <div class="carousel-caption">Wargames de Fantasía y Ciencia Ficción: Campañas Activas</div>
+                    </div>
                 </div>
-                <div class="insta-item">
-                    <img src="https://unsplash.com" alt="Detalle de Hobby">
-                    <div class="insta-overlay">Talleres de Modelismo y Pintura de Miniaturas</div>
-                </div>
-                <div class="insta-item">
-                    <img src="https://unsplash.com" alt="Estrategia en mesa">
-                    <div class="insta-overlay">Simulaciones de Estrategia Histórica y Tableros en Detalle</div>
-                </div>
-                <div class="insta-item">
-                    <img src="https://unsplash.com" alt="Dados de juego">
-                    <div class="insta-overlay">Wargames de Fantasía: Campañas Activas</div>
+
+                <!-- Puntos Indicadores -->
+                <div class="carousel-dots">
+                    <div class="dot active" onclick="goToSlide(0)"></div>
+                    <div class="dot" onclick="goToSlide(1)"></div>
+                    <div class="dot" onclick="goToSlide(2)"></div>
+                    <div class="dot" onclick="goToSlide(3)"></div>
                 </div>
             </div>
         </div>
@@ -272,8 +327,58 @@
     </div>
 
     <footer>
-        <p>Ordo Australis © 1999 – 2026 | Encuéntranos también en nuestro <a href="https://facebook.com" target="_blank">Grupo de Facebook</a></p>
+        <p>Ordo Australis © 1999 – 2026 | Encuéntranos también en nuestro <a href="https://www.facebook.com/groups/ordoaustralis" target="_blank">Grupo de Facebook</a></p>
     </footer>
 
+    <script>
+        const container = document.querySelector('.carousel-container');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function updateCarousel() {
+            container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Movimiento automático cada 5 segundos
+        let autoPlay = setInterval(nextSlide, 5000);
+
+        // Detener e iniciar temporizador si el usuario interactúa manualmente
+        [prevBtn, nextBtn].forEach(btn => {
+            btn.addEventListener('click', () => {
+                clearInterval(autoPlay);
+                autoPlay = setInterval(nextSlide, 7000);
+            });
+        });
+    </script>
 </body>
 </html>
