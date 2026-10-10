@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordo Australis | Club de Wargames Santiago</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #8b0000;
+            --accent: #d4af37;
+            --text-light: #f5f5f5;
+            --text-dark: #333333;
+            --bg-card: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://unsplash.com') no-repeat center center/cover;
+            color: var(--text-light);
+            text-align: center;
+            padding: 100px 20px;
+            border-bottom: 5px solid var(--secondary);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .grid-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--text-light);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #b30000;
+            color: var(--accent);
+        }
+
+        /* Sección de Galería Estilo Instagram */
+        .instagram-section {
+            background: var(--bg-card);
+            padding: 40px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+        }
+
+        .instagram-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .instagram-header h2 {
+            color: var(--primary);
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .insta-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            aspect-ratio: 1 / 1;
+            background-color: #ddd;
+        }
+
+        .insta-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .insta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        .insta-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .insta-item:hover .insta-overlay {
+            opacity: 1;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: #999;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--accent);
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .container { margin: 20px auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ordo Australis</h1>
+        <p>Club de Wargames Históricos y de Fantasía — Santiago, Chile</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Bloques de Información Principal -->
+        <div class="grid-info">
+            <div class="card">
+                <h2>📅 Reuniones Semanales</h2>
+                <p>Nos juntamos a desplegar ejércitos y compartir dados todos los fines de semana.</p>
+                <p><strong>Día:</strong> Sábados</p>
+                <p><strong>Horario:</strong> 12:00 a 20:00 hrs</p>
+            </div>
+
+            <div class="card">
+                <h2>📍 ¿Dónde Estamos?</h2>
+                <p>Nuestros cuarteles se encuentran en la comuna de Ñuñoa:</p>
+                <p><strong>Unidad Vecinal N°2 Amapolas</strong></p>
+                <p>Pasaje Nueve 4890, Ñuñoa, Santiago de Chile.</p>
+            </div>
+
+            <div class="card">
+                <h2>✉️ Comunidad y Contacto</h2>
+                <p>¿Quieres agendar una partida, aprender un sistema o visitarnos? ¡Escríbenos!</p>
+                <p><strong>Email:</strong> ordoaustralis.cl@gmail.com</p>
+                <a href="mailto:ordoaustralis.cl@gmail.com" class="btn">Enviar Correo</a>
+            </div>
+        </div>
+
+        <!-- Vitrina Visual: Instagram Highlights -->
+        <div class="instagram-section">
+            <div class="instagram-header">
+                <h2>📸 Campos de Batalla en Ordo</h2>
+                <a href="https://www.instagram.com/club_ordo_australis/" target="_blank" class="btn" style="margin-top:0;">Ver @club_ordo_australis</a>
+            </div>
+            
+            <div class="instagram-grid">
+                <!-- Ítem 1: Warhammer 40k -->
+                <div class="insta-item">
+                    <img src="https://unsplash.com" alt="Miniaturas de Wargames">
+                    <div class="insta-overlay">Choque de Facciones: Necrones contra Imperio Tau</div>
+                </div>
+                <!-- Ítem 2: Pintura y modelismo -->
+                <div class="insta-item">
+                    <img src="https://unsplash.com" alt="Detalle de Hobby">
+                    <div class="insta-overlay">Talleres de Modelismo y Pintura de Miniaturas</div>
+                </div>
+                <!-- Ítem 3: Juegos Históricos -->
+                <div class="insta-item">
+                    <img src="https://unsplash.com" alt="Estrategia en mesa">
+                    <div class="insta-overlay">Simulaciones de Estrategia Histórica y Tableros en Detalle</div>
+                </div>
+                <!-- Ítem 4: Comunidad -->
+                <div class="insta-item">
+                    <img src="https://unsplash.com" alt="Dados de juego">
+                    <div class="insta-overlay">Wargames de Fantasía: Campañas Activas</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Ordo Australis © 1999 – 2026 | Encuéntranos también en nuestro <a href="https://facebook.com" target="_blank">Grupo de Facebook</a></p>
+    </footer>
+
+</body>
+</html>
