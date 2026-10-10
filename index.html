@@ -31,12 +31,22 @@
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://unsplash.com') no-repeat center center/cover;
             color: var(--text-light);
             text-align: center;
-            padding: 100px 20px;
+            padding: 60px 20px;
             border-bottom: 5px solid var(--secondary);
         }
 
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-club {
+            max-width: 180px;
+            height: auto;
+            filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.5));
+        }
+
         header h1 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -45,8 +55,10 @@
         }
 
         header p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .container {
@@ -150,7 +162,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.75);
             color: white;
             display: flex;
             justify-content: center;
@@ -159,8 +171,8 @@
             transition: opacity 0.3s ease;
             font-weight: bold;
             text-align: center;
-            padding: 10px;
-            font-size: 0.9rem;
+            padding: 15px;
+            font-size: 0.95rem;
         }
 
         .insta-item:hover img {
@@ -187,7 +199,8 @@
         }
 
         @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
+            header h1 { font-size: 2rem; }
+            .logo-club { max-width: 140px; }
             .container { margin: 20px auto; }
         }
     </style>
@@ -195,6 +208,10 @@
 <body>
 
     <header>
+        <!-- Contenedor del nuevo logo -->
+        <div class="logo-container">
+            <img src="logo_ordo_nuevo.png" alt="Logo Ordo Australis" class="logo-club">
+        </div>
         <h1>Ordo Australis</h1>
         <p>Club de Wargames Históricos y de Fantasía — Santiago, Chile</p>
     </header>
@@ -229,26 +246,22 @@
         <div class="instagram-section">
             <div class="instagram-header">
                 <h2>📸 Campos de Batalla en Ordo</h2>
-                <a href="https://www.instagram.com/club_ordo_australis/" target="_blank" class="btn" style="margin-top:0;">Ver @club_ordo_australis</a>
+                <a href="https://instagram.com" target="_blank" class="btn" style="margin-top:0;">Ver @club_ordo_australis</a>
             </div>
             
             <div class="instagram-grid">
-                <!-- Ítem 1: Warhammer 40k -->
                 <div class="insta-item">
                     <img src="https://unsplash.com" alt="Miniaturas de Wargames">
                     <div class="insta-overlay">Choque de Facciones: Necrones contra Imperio Tau</div>
                 </div>
-                <!-- Ítem 2: Pintura y modelismo -->
                 <div class="insta-item">
                     <img src="https://unsplash.com" alt="Detalle de Hobby">
                     <div class="insta-overlay">Talleres de Modelismo y Pintura de Miniaturas</div>
                 </div>
-                <!-- Ítem 3: Juegos Históricos -->
                 <div class="insta-item">
                     <img src="https://unsplash.com" alt="Estrategia en mesa">
                     <div class="insta-overlay">Simulaciones de Estrategia Histórica y Tableros en Detalle</div>
                 </div>
-                <!-- Ítem 4: Comunidad -->
                 <div class="insta-item">
                     <img src="https://unsplash.com" alt="Dados de juego">
                     <div class="insta-overlay">Wargames de Fantasía: Campañas Activas</div>
